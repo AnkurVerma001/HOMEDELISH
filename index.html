@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOMEDELISH - Cloud Kitchen</title>
+    <meta
+      name="description"
+      content="Bringing the comfort of home cooking to your doorstep with fresh, delicious meals made with love."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="nav-wrapper">
+          <div class="logo">
+            <a href="#home">HOMEDELISH</a>
+          </div>
+          <nav class="nav-desktop">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#menu" class="nav-link">Menu</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </nav>
+          <div class="nav-actions">
+            <button class="cart-btn" id="cartBtn">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count" id="cartCount">0</span>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-content">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+          <i class="fas fa-times"></i>
+        </button>
+        <nav class="mobile-nav">
+          <a href="#home" class="mobile-nav-link">Home</a>
+          <a href="#menu" class="mobile-nav-link">Menu</a>
+          <a href="#about" class="mobile-nav-link">About</a>
+          <a href="#contact" class="mobile-nav-link">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-content">
+        <div class="cart-header">
+          <h3>Your Order</h3>
+          <button class="cart-close" id="cartClose">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+          <div class="empty-cart">
+            <i class="fas fa-shopping-cart"></i>
+            <p>Your cart is empty</p>
+            <span>Add some delicious items to get started!</span>
+          </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none">
+          <div class="cart-total">
+            <span>Total: $<span id="cartTotal">0.00</span></span>
+          </div>
+          <button class="checkout-btn" id="checkoutBtn">
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <main>
+      <!-- Home Section -->
+      <section id="home" class="section active">
+        <!-- Hero -->
+        <div class="hero">
+          <div class="hero-bg"></div>
+          <div class="hero-content">
+            <h1>Delicious Home-Cooked Meals</h1>
+            <p>
+              Experience the comfort of home cooking, delivered fresh to your
+              doorstep
+            </p>
+            <button class="cta-btn" onclick="showSection('menu')">
+              Order Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Featured Dishes -->
+        <div class="featured-section">
+          <div class="container">
+            <div class="section-header">
+              <h2>Featured Dishes</h2>
+              <p>Our most loved home-cooked specialties</p>
+            </div>
+            <div class="featured-grid" id="featuredGrid">
+              <!-- Featured items will be loaded here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="how-it-works">
+          <div class="container">
+            <div class="section-header">
+              <h2>How It Works</h2>
+              <p>Fresh meals delivered in 3 simple steps</p>
+            </div>
+            <div class="steps-grid">
+              <div class="step">
+                <div class="step-icon">
+                  <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Choose Your Meal</h3>
+                <p>
+                  Browse our menu and select your favorite home-cooked dishes
+                </p>
+              </div>
+              <div class="step">
+                <div class="step-icon">
+                  <i class="fas fa-fire"></i>
+                </div>
+                <h3>Fresh Preparation</h3>
+                <p>
+                  Our chefs prepare your meal fresh with premium ingredients
+                </p>
+              </div>
+              <div class="step">
+                <div class="step-icon">
+                  <i class="fas fa-truck"></i>
+                </div>
+                <h3>Fast Delivery</h3>
+                <p>
+                  Hot, delicious meals delivered to your door in 30-45 minutes
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Menu Section -->
+      <section id="menu" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h1>Our Menu</h1>
+            <p>Authentic home-cooked meals made with love</p>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="category-filter">
+            <button class="filter-btn active" data-category="all">
+              All Items
+            </button>
+            <button class="filter-btn" data-category="mains">
+              Main Courses
+            </button>
+            <button class="filter-btn" data-category="appetizers">
+              Appetizers
+            </button>
+            <button class="filter-btn" data-category="desserts">
+              Desserts
+            </button>
+          </div>
+
+          <!-- Menu Grid -->
+          <div class="menu-grid" id="menuGrid">
+            <!-- Menu items will be loaded here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="section">
+        <div class="container">
+          <div class="about-content">
+            <div class="about-text">
+              <h1>Our Story</h1>
+              <p>
+                HOMEDELISH was born from a simple belief: everyone deserves to
+                enjoy delicious, home-cooked meals, even with a busy lifestyle.
+                Our passionate chefs prepare each dish with the same care and
+                love you'd find in a family kitchen.
+              </p>
+              <p>
+                Using only the freshest ingredients and time-honored recipes, we
+                bring the comfort and nutrition of home cooking directly to your
+                doorstep. Every meal is prepared fresh to order in our certified
+                cloud kitchen.
+              </p>
+              <div class="stats">
+                <div class="stat">
+                  <div class="stat-number">500+</div>
+                  <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-number">50+</div>
+                  <div class="stat-label">Menu Items</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-number">4.8★</div>
+                  <div class="stat-label">Average Rating</div>
+                </div>
+              </div>
+            </div>
+            <div class="about-images">
+              <img
+                src="https://images.unsplash.co4m/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                alt="Chef preparing ingredients"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                alt="Fresh ingredients"
+              />
+            </div>
+          </div>
+
+          <!-- Values Section -->
+          <div class="values-section">
+            <div class="section-header">
+              <h2>Our Values</h2>
+              <p>What drives us every day</p>
+            </div>
+            <div class="values-grid">
+              <div class="value">
+                <div class="value-icon">🥘</div>
+                <h3>Quality First</h3>
+                <p>
+                  We source only the finest ingredients and maintain the highest
+                  standards in preparation and presentation.
+                </p>
+              </div>
+              <div class="value">
+                <div class="value-icon">❤️</div>
+                <h3>Made with Love</h3>
+                <p>
+                  Every dish is prepared with passion and care, just like a
+                  loving family member would make for you.
+                </p>
+              </div>
+              <div class="value">
+                <div class="value-icon">🌱</div>
+                <h3>Sustainability</h3>
+                <p>
+                  We're committed to eco-friendly practices and supporting local
+                  suppliers whenever possible.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h1>Get In Touch</h1>
+            <p>Questions? We'd love to hear from you</p>
+          </div>
+
+          <div class="contact-content">
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h4>Our Kitchen</h4>
+                  <p>123 Culinary Street, Food District, City 12345</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                  <h4>Call Us</h4>
+                  <p>(555) 123-FOOD (3663)</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h4>Email Us</h4>
+                  <p>hello@homedelish.com</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                  <h4>Hours</h4>
+                  <p>Mon-Sun: 11:00 AM - 10:00 PM</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-form">
+              <form id="contactForm">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Checkout Section -->
+      <section id="checkout" class="section">
+        <div class="container">
+          <h1>Checkout</h1>
+          <div class="checkout-content">
+            <div class="checkout-form">
+              <div class="form-card">
+                <h3><i class="fas fa-user"></i> Delivery Information</h3>
+                <form id="checkoutForm">
+                  <div class="form-group">
+                    <label for="customerName">Full Name</label>
+                    <input
+                      type="text"
+                      id="customerName"
+                      name="customerName"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="customerEmail">Email Address</label>
+                    <input
+                      type="email"
+                      id="customerEmail"
+                      name="customerEmail"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="customerPhone">Phone Number</label>
+                    <input
+                      type="tel"
+                      id="customerPhone"
+                      name="customerPhone"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="deliveryAddress">Delivery Address</label>
+                    <input
+                      type="text"
+                      id="deliveryAddress"
+                      name="deliveryAddress"
+                      required
+                    />
+                  </div>
+                  <button type="submit" class="submit-btn">Place Order</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="order-summary">
+              <div class="form-card">
+                <h3>Order Summary</h3>
+                <div id="checkoutItems"></div>
+                <div class="checkout-total">
+                  <div class="total-row">
+                    <span>Total:</span>
+                    <span id="checkoutTotal">$0.00</span>
+                  </div>
+                </div>
+                <div class="delivery-info">
+                  <h4>Delivery Information</h4>
+                  <p>• Estimated delivery time: 30-45 minutes</p>
+                  <p>• Free delivery on orders over $25</p>
+                  <p>• Payment on delivery (Cash or Card)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>HOMEDELISH</h3>
+            <p>
+              Bringing the comfort of home cooking to your doorstep with fresh,
+              delicious meals made with love.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#menu">Menu</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#">Food Delivery</a></li>
+              <li><a href="#">Catering</a></li>
+              <li><a href="#">Meal Plans</a></li>
+              <li><a href="#">Gift Cards</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Newsletter</h4>
+            <p>Subscribe for special offers and new menu items</p>
+            <div class="newsletter">
+              <input type="email" placeholder="Your email" />
+              <button><i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 HOMEDELISH. All rights reserved. Made with ❤️ for food
+            lovers.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+      <i class="fas fa-check-circle"></i>
+      <span id="toastMessage"></span>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
